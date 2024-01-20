@@ -5,7 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      LoginText: '#313173',
+      BGLoginText: '#313173',
+    },
   },
   plugins: [],
 }
