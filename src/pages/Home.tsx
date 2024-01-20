@@ -1,7 +1,5 @@
-import { Header } from "../components/header"
-
 export const Home = () => {
   return (
-    <Header/>
-  )
+    <h2>Body</h2>
+    )
 }

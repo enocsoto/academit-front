@@ -6,8 +6,10 @@ export default {
   ],
   theme: {
     extend: {
-      LoginText: '#313173',
       BGLoginText: '#313173',
+      fontFamily: {
+        'lexend': ['Lexend', 'sans-serif']
+      }
     },
   },
   plugins: [],

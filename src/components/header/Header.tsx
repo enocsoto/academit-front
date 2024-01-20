@@ -1,10 +1,13 @@
+import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/academit-logo.svg'
 import { NavBar } from './NavBar'
 export const Header = () => {
   return (
-    <header>
-      <img src={logo} alt="Logo" />
-      <NavBar/>
+    <header className="flex place-content-between items-center">
+      <NavLink to='/' className=''>
+        <img src={logo} alt="Logo"  className=''/>
+      </NavLink>
+      <NavBar />
     </header>
   )
 }
