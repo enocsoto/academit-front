@@ -13,27 +13,18 @@ export const NavBar = () => {
                 sm:items-center font-lexend pr-10 gap-4 
             '>
                     <NavLink to='/categories'>
-                        <button className="
-                    p-2 
-                    rounded-md
-                    text-LoginText 
-                    ">
+                        <button className="p-2 rounded-md text-LoginText hover:text-[#313173]">
                             Categorías
                         </button>
                     </NavLink>
 
                     <NavLink to='/price'>
-                        <button className="
-                    p-2
-                    rounded-md
-                    text-gray-800 
-                    font-lexend 
-                    bg-BGLoginText">
+                        <button className="p-2 rounded-md text-gray-800 font-lexend  bg-BGLoginText hover:text-[#313173]">
                             Precios
                         </button>
                     </NavLink>
                     <NavLink to='/contact'>
-                        <button className=' '>
+                        <button className='p-2 rounded-md text-gray-800 font-lexend  bg-BGLoginText hover:text-[#313173]'>
                             Contáctanos
                         </button>
                     </NavLink>
@@ -44,28 +35,14 @@ export const NavBar = () => {
                     </NavLink>
 
                     <NavLink to='/login'>
-                        <button className="
-                    border-2 
-                    border-[#313173]
-                    rounded-md 
-                    p-2 
-                    font-semibold
-                    font-lexend 
-                    text-[#313173]
-                    lg:text-[20px]
+                        <button className="border-2 border-[#313173] rounded-md p-2 
+                    font-semibold font-lexend text-[#313173] lg:text-[20px]
+                    hover:text-white hover:bg-[#313173]
                     ">Iniciar sesión</button>
                     </NavLink>
 
                     <NavLink to='/register'>
-                        <button className="
-                   border-2
-                   border-[#313173]
-                   bg-[#313173]
-                   rounded-md 
-                   p-2
-                   font-semibold
-                   font-lexend 
-                   text-white
+                        <button className="border-2 border-[#313173] bg-[#313173] rounded-md p-2 font-semibold font-lexend text-white hover:text-[#313173] hover:bg-white
                     ">Regístrate</button>
                     </NavLink>
                 </div>

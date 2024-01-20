@@ -1,14 +1,15 @@
 import { Outlet } from "react-router-dom"
 import { Header } from "../components/header"
+import { Footer } from "../components/footer/Footer"
 
 export const LayoutPublic = () => {
     return (
-        <div className="p-6">
+        <div className="">
             <Header/>
             <main className="">
                 <Outlet />
             </main>
-            <footer className="flex">Footer</footer>
+            <footer>{<Footer/>}</footer>
         </div>
     )
 }

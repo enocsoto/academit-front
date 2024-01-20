@@ -3,7 +3,7 @@ import logo from '../../assets/images/academit-logo.svg'
 import { NavBar } from './NavBar'
 export const Header = () => {
   return (
-    <header className="flex place-content-between items-center">
+    <header className="flex place-content-between items-center p-4">
       <NavLink to='/' className=''>
         <img src={logo} alt="Logo"  className=''/>
       </NavLink>
