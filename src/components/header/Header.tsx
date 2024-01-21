@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header className="flex place-content-between items-center p-4">
       <NavLink to='/' className=''>
-        <img src={logo} alt="Logo"  className=''/>
+        <img src={logo} alt="logo"  className='cursor-pointer'/>
       </NavLink>
       <NavBar />
     </header>
