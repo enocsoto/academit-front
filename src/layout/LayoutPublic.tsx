@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom"
-import { Header } from "../components/header"
 import { Footer } from "../components/footer/Footer"
 import { Sections } from "../components/sections/Sections"
+import { NavBar } from "../components/header/NavBar"
 
 export const LayoutPublic = () => {
     return (
         <div className="">
-            <Header/>
-            <main className="dark:bg-gray-950">
+            <main className="dark:bg-gray-950 bg-white">
+                <NavBar/>
                 <Outlet />
                 <Sections/>
             </main>
