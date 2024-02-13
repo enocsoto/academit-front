@@ -37,7 +37,6 @@ export const NavLinks = () => {
         }
       ]
     },
-    { name: 'Contáctanos' },
   ]
   return (
     <>

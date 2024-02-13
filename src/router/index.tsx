@@ -9,6 +9,7 @@ import { Login } from '../pages/Login'
 import { NotFound } from '../pages/NotFound'
 import { Price } from '../pages/Price'
 import { Register } from '../pages/Register'
+import { Search } from "../pages/Search";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: '/car',
                 element: <Car />
+            },
+            {
+                path: '/search',
+                element: <Search />
             },
             {
                 path: '/categories',
