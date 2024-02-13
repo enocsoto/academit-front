@@ -5,12 +5,16 @@ import Node from '../../assets/images/Node-Js.svg';
 import React from '../../assets/images/React.svg';
 import Github from '../../assets/images/github.svg';
 import { SlArrowDown } from "react-icons/sl";
+import { useState } from "react";
 
 export const NavLinks = () => {
+  const [heading, setHeading] = useState("")
 
   const links = [
     {
-      name: 'Categorías', submenu: true, sublinks: [
+      name: 'Categorías',
+      submenu: true,
+      sublinks: [
         {
           Head: 'Cursos',
           sublink: [
@@ -38,23 +42,26 @@ export const NavLinks = () => {
       ]
     },
   ]
+
   return (
     <>
       {links.map((link, index) => (
         <div key={index}>
-          <div className="px-3 text-left md:cursor-pointer group" key={link.name}>
-          <span className="flex items-center"> 
-              <h1 className={`py-7 `}>{link.name}</h1>
+          <div className="px-3 text-left md:cursor-pointer group font-lexend" key={link.name}>
+            <span className="flex items-center">
+              <h1 className="py-7 flex justify-between items-center md:pr-0 pr-3" onClick={() => heading !== link.name ? setHeading(link.name)
+                : setHeading('')}>{link.name}
+                </h1>
               {link.submenu && (
-                <SlArrowDown className="ml-2" /> 
+                <SlArrowDown className="ml-0 md:ml-2" />
               )}
-            </span>           
+            </span>
             {link.submenu && (
-              <div className="absolute top-20 border-2 rounded-md hidden group-hover:block hover:block">
+              <div className="absolute top-20 border-2 rounded-md hidden group-hover:md:block hover:md:block">
                 <div className="py-3  bg-white w-auto h-auto px-6 ">
                   {link.sublinks.map((sublink, subIndex) => (
                     <div key={subIndex}>
-                      <h1 className="text-lg font-semibold font-lexend ">{sublink.Head}</h1>
+                      <h1 className="text-lg font-semibold font-lexend ">{sublink.Head} </h1>
                       {sublink.sublink.map((link, linkIndex) => (
                         <li key={linkIndex} className="text-sm text-gray-900 my-2.5 flex gap-3">
                           <img src={link?.icon} className="w-7 h-7" alt={link.name} />
@@ -68,6 +75,29 @@ export const NavLinks = () => {
                 </div>
               </div>
             )}
+          </div>
+          {/* mobile menus */}
+          <div className={`${heading === link.name ? 'md:hidden' : 'hidden'} font-lexend`}>
+            {/* sublink */}
+            {link.sublinks.map((sublink, subindex) => (
+              <div key={subindex}>
+                <div >
+                  <h1 className="pb-2 pl-3 font-semibold md:pr-0 pr-5 flex items-center">
+                    {sublink.Head}
+                  </h1>
+                <div>
+                  {sublink.sublink.map((slink, index) => (
+                    <li key={index} className="py-3 pl-7 flex gap-4">
+                      <img src={slink?.icon} className="w-7 h-7" alt={slink.name} />
+                      <Link to={slink.link}>{slink.name}</Link>
+                    </li>
+
+                  ))}
+                </div>
+                </div>
+              </div>
+            ))
+            }
           </div>
         </div>
       ))}
