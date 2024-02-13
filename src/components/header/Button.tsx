@@ -6,12 +6,12 @@ import { GiShoppingCart } from "react-icons/gi";
 export const Button = () => {
     return (
         <div className="md:flex items-center gap-4">
-            <NavLink to='/car'>
+            <NavLink to='/search'>
                 <div className="cursor-pointer">
                 <BiSearchAlt className='w-10 h-10'/>
                 </div>
             </NavLink>
-            <NavLink to='/search'>
+            <NavLink to='/car'>
                 <div className=" cursor-pointer">
                     <GiShoppingCart className='w-10 h-10'/>
                 </div>
