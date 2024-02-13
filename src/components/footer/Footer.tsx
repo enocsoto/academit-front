@@ -6,22 +6,22 @@ import { Link } from "react-router-dom"
 export const Footer = () => {
     return (
         <>
-            <footer className="p-4 bg-gray-950 text-white  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 font-lexend">
-                <div className=" p-2">
+            <footer className="p-4 bg-gray-950 text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 font-lexend">
+                <div className="md:text-[17px] p-4">
                     <Link to='/'>
                         <img src={Logo} alt="Logo" />
                     </Link>
-                    <div className='pt-3'>
+                    <div className='pt-3 max-w-[263px]'>
                         <img src={social} alt="socials" className='pt-2 pb-3' />
                         <p>“Academit, <span className='text-[#313173] font-semibold p-2'>programamos</span> la <span className='text-[#313173] font-semibold'>elite </span> del mañana.”</p>
                     </div>
 
                 </div>
-                <div className="font-normal max-w-7xl mx/auto p-2">
-                    <div className="sm:text-[17px]">
+                <div className="font-normal max-w-7xl mx/auto p-2 ">
+                    <div className="md:text-[17px]">
                         <ul>
                             <Link to='/'>
-                                <li className="sm:text-[16px] ">Academit</li>
+                                <li className="sm:text-[16px]">Academit</li>
                             </Link>
                             <Link to='/'>
                                 <li className="sm:text-[16px] ">Aviso de privacidad</li>
@@ -36,8 +36,8 @@ export const Footer = () => {
                                 <li className="sm:text-[16px] ">Términos y condiciones</li>
                             </Link>
                             <Link to='/'>
-                                <li className="sm:text-[16px] ">
-                                    Florida 556, piso 3 - Ciudad Autónoma de Buenos Aires </li>
+                                <li className="sm:text-[16px] max-w-[263px]">
+                                    Florida 556, piso 3 -  Ciudad Autónoma de Buenos Aires</li>
                             </Link>
                         </ul>
                     </div>
@@ -45,7 +45,7 @@ export const Footer = () => {
 
                 </div>
                 <div className="font-normal max-w-7xl mx/auto p-2">
-                    <div className="sm:text-[17px]">
+                    <div className="md:text-[17px]">
                         <ul>
                             <Link to='/'>
                                 <li className="sm:text-[16px] ">
@@ -86,7 +86,7 @@ export const Footer = () => {
                     </div>
                 </div>
                 <div className="font-normal max-w-7xl mx/auto p-2">
-                    <div className="sm:text-[17px]">
+                    <div className="md:text-[17px]">
                         <ul>
                             <Link to='/'>
                                 <li className="sm:text-[16px]">Links</li>
