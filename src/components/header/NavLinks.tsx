@@ -4,6 +4,8 @@ import Html from '../../assets/images/Html.svg';
 import Node from '../../assets/images/Node-Js.svg';
 import React from '../../assets/images/React.svg';
 import Github from '../../assets/images/github.svg';
+import { SlArrowDown } from "react-icons/sl";
+
 export const NavLinks = () => {
 
   const links = [
@@ -12,9 +14,9 @@ export const NavLinks = () => {
         {
           Head: 'Cursos',
           sublink: [
-            { icon: Javascript, name: 'javascript', link: '/javascript' },
+            { icon: Javascript, name: 'Javascript', link: '/javascript' },
             { icon: Html, name: 'HTML-CSS', link: '/html-css' },
-            { icon: Node, name: 'Node.js', link: '/Nodejs' },
+            { icon: Node, name: 'Node js', link: '/Nodejs' },
             { icon: React, name: 'React js', link: '/React-js' },
             { icon: Github, name: 'GitHub - GitLab', link: '/Github-gitlab' },
           ]
@@ -26,9 +28,9 @@ export const NavLinks = () => {
         {
           Head: 'Cursos',
           sublink: [
-            { icon: Javascript, name: 'javascript', link: '/javascript' },
+            { icon: Javascript, name: 'Javascript', link: '/javascript' },
             { icon: Html, name: 'HTML-CSS', link: '/html-css' },
-            { icon: Node, name: 'Node.js', link: '/Nodejs' },
+            { icon: Node, name: 'Node js', link: '/Nodejs' },
             { icon: React, name: 'React js', link: '/React-js' },
             { icon: Github, name: 'GitHub - GitLab', link: '/Github-gitlab' },
           ]
@@ -42,10 +44,15 @@ export const NavLinks = () => {
       {links.map((link, index) => (
         <div key={index}>
           <div className="px-3 text-left md:cursor-pointer group" key={link.name}>
-            <h1 className="py-7">{link.name}</h1>
+          <span className="flex items-center"> 
+              <h1 className={`py-7 `}>{link.name}</h1>
+              {link.submenu && (
+                <SlArrowDown className="ml-2" /> 
+              )}
+            </span>           
             {link.submenu && (
-              <div className="absolute top-20 hidden group-hover:block hover:block">
-                <div className="py-3 bg-white ">
+              <div className="absolute top-20 border-2 rounded-md hidden group-hover:block hover:block">
+                <div className="py-3  bg-white w-auto h-auto px-6 ">
                   {link.sublinks.map((sublink, subIndex) => (
                     <div key={subIndex}>
                       <h1 className="text-lg font-semibold font-lexend ">{sublink.Head}</h1>

@@ -3,22 +3,22 @@ import logo from '../../assets/images/academit-logo.svg'
 import { NavLinks } from './NavLinks';
 import { Button } from './Button';
 import { useState } from 'react';
+import { RxHamburgerMenu } from "react-icons/rx";
 
 
 export const NavBar = () => {
 const [open, setOpen] = useState(false)
     return (
         <nav className='dark:bg-white items-center gap-4 p-3 '>
-            <div className='flex items-center font-medium justify-around'>
-                    <div className='z-50 p-3 md:w-auto w-full flex justify-between'>
+            <div className='flex flex-auto items-center font-medium lg:justify-between'>
+                    <div className='lg:basis-1/6 z-50 p-3 md:w-auto w-full flex justify-between'>
                         <NavLink to='/'>
                             <img src={logo} alt="logo" className='md:cursor-pointer' />
                         </NavLink>
                         <div className='text-3xl md:hidden' onClick={()=> setOpen(!open)}>
-                        <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
+                        <RxHamburgerMenu name={`${open ? "close" : "menu"}`}></RxHamburgerMenu>
                         </div>
                     </div>
-                <div className='flex gap-4'>
                     <ul className='md:flex hidden 
                     items-center gap-4 
                     font-lexend text-LoginText 
@@ -27,7 +27,7 @@ const [open, setOpen] = useState(false)
                     '>
                         <NavLinks/>
                     </ul>
-                    <div className='md:block hidden'>
+                    <div className='hidden md:flex items-center'>
                     <Button/>
                     </div>
                 </div>
@@ -40,11 +40,8 @@ const [open, setOpen] = useState(false)
                     py-24 pl-4
                     duration-500 ${open ? "left-0": "left-[-100%]"}`}>
                         <NavLinks/>
-                        <div className='py-5'>
                             <Button/>
-                        </div>
                     </ul>
-            </div>
         </nav >
 
     )
