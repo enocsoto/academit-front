@@ -51,7 +51,7 @@ export const NavLinks = () => {
             <span className="flex items-center">
               <h1 className="py-7 flex justify-between items-center md:pr-0 pr-3" onClick={() => heading !== link.name ? setHeading(link.name)
                 : setHeading('')}>{link.name}
-                </h1>
+              </h1>
               {link.submenu && (
                 <SlArrowDown className="ml-0 md:ml-2" />
               )}
@@ -85,15 +85,15 @@ export const NavLinks = () => {
                   <h1 className="pb-2 pl-3 font-semibold md:pr-0 pr-5 flex items-center">
                     {sublink.Head}
                   </h1>
-                <div>
-                  {sublink.sublink.map((slink, index) => (
-                    <li key={index} className="py-3 pl-7 flex gap-4">
-                      <img src={slink?.icon} className="w-7 h-7" alt={slink.name} />
-                      <Link to={slink.link}>{slink.name}</Link>
-                    </li>
+                  <div>
+                    {sublink.sublink.map((slink, index) => (
+                      <li key={index} className="py-3 pl-7 flex gap-4">
+                        <img src={slink?.icon} className="w-7 h-7" alt={slink.name} />
+                        <Link to={slink.link}>{slink.name}</Link>
+                      </li>
 
-                  ))}
-                </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))

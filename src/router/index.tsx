@@ -5,50 +5,63 @@ import { Categories } from "../pages/Categories";
 import { Contact } from '../pages/Contact'
 import { Home } from '../pages/Home'
 import { LayoutPublic } from "../layout/LayoutPublic";
-import { Login } from '../pages/Login'
 import { NotFound } from '../pages/NotFound'
 import { Price } from '../pages/Price'
-import { Register } from '../pages/Register'
+import { Register } from '../pages/auth/Register'
 import { Search } from "../pages/Search";
+import { Javascript } from "../pages/Javascript";
+import { AuthLayout } from "../layout/AuthLayout";
+import { Login } from "../pages/auth/Login";
 
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <LayoutPublic />,
-        errorElement: <NotFound />,
-        children: [
-            {
-                index: true,
-                element: <Home />,
-            },
-            {
-                path: '/contact',
-                element: <Contact />,
-            },
-            {
-                path: '/login',
-                element: <Login />,
-            },
-            {
-                path: '/price',
-                element: <Price />,
-            },
-            {
-                path: '/register',
-                element: <Register />,
-            },
-            {
-                path: '/car',
-                element: <Car />
-            },
-            {
-                path: '/search',
-                element: <Search />
-            },
-            {
-                path: '/categories',
-                element: <Categories />
-            }
-        ]
-    },
+  {
+    path: '/',
+    element: <LayoutPublic />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+      },
+      {
+        path: '/price',
+        element: <Price />,
+      },
+
+      {
+        path: '/car',
+        element: <Car />
+      },
+      {
+        path: '/search',
+        element: <Search />
+      },
+      {
+        path: '/categories',
+        element: <Categories />
+      },
+      {
+        path: '/javascript',
+        element: <Javascript />
+      }
+    ]
+  },
+  {
+    path: '/',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: '/register',
+        element: <Register />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+    ]
+  }
 ])
