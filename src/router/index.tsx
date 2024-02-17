@@ -12,6 +12,8 @@ import { Search } from "../pages/Search";
 import { Javascript } from "../pages/Javascript";
 import { AuthLayout } from "../layout/AuthLayout";
 import { Login } from "../pages/auth/Login";
+import { ForgetPassword } from "../pages/auth/ForgetPassword";
+import { ChangePassword } from "../pages/auth/ChangePassword";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ export const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+      },
+      {
+        path: '/reset-password',
+        element: <ForgetPassword />,
+      },
+      {
+        path: '/change-password/:token',
+        element: <ChangePassword />,
       },
     ]
   }
