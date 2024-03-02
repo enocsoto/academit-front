@@ -49,7 +49,7 @@ export const NavLinks = () => {
         <div key={index}>
           <div className="px-3 text-left md:cursor-pointer group font-lexend" key={link.name}>
             <span className="flex items-center">
-              <h1 className="py-7 flex justify-between items-center md:pr-0 pr-3" onClick={() => heading !== link.name ? setHeading(link.name)
+              <h1 className="py-7 justify-between items-center md:pr-0 pr-3" onClick={() => heading !== link.name ? setHeading(link.name)
                 : setHeading('')}>{link.name}
               </h1>
               {link.submenu && (

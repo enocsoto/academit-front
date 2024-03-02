@@ -2,21 +2,31 @@ import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/academit-logo.svg'
 import { NavLinks } from './NavLinks';
 import { Button } from './Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RxHamburgerMenu } from "react-icons/rx";
+import logoWhite from '../../assets/images/academit-logo-white.svg'
+import { IoMdClose } from "react-icons/io";
 
 
 export const NavBar = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setIsDarkTheme(true)
+    }
+  })
   const [open, setOpen] = useState(false)
   return (
-    <nav className='dark:bg-white items-center gap-4 p-3 '>
+    <nav className='dark:bg-dark items-center gap-4 p-3 '>
       <div className='flex flex-auto items-center font-medium lg:justify-between'>
         <div className='lg:basis-1/6 z-50 p-3 md:w-auto w-full flex justify-between'>
           <NavLink to='/'>
-            <img src={logo} alt="logo" className='md:cursor-pointer' />
+            <img src={isDarkTheme ? logoWhite : logo} alt="logo" className='md:cursor-pointer' />
           </NavLink>
-          <div className='text-3xl md:hidden' onClick={() => setOpen(!open)}>
-            <RxHamburgerMenu name={`${open ? "close" : "menu"}`}></RxHamburgerMenu>
+          <div className='text-3xl md:hidden ' onClick={() => setOpen(!open)}>
+          <div className={`icon-container ${open ? 'open' : 'closed'}`}>
+          {open ? <IoMdClose/>: <RxHamburgerMenu/>}
+      </div>
           </div>
         </div>
         <ul className='md:flex hidden 
@@ -24,6 +34,7 @@ export const NavBar = () => {
                     font-lexend text-LoginText 
                     hover:text-[#313173] lg:text-[20px] 
                     md:text-[16px] p-2
+                    dark:text-white
                     '>
           <NavLinks />
           <NavLink to='/contact'>
