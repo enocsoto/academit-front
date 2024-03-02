@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { SlArrowDown } from "react-icons/sl";
 import { BiCheckDouble } from "react-icons/bi";
 import { TbMinusVertical } from "react-icons/tb";
-const cursoJavascript = {
+interface Curso {
+  curso: string;
+  modulos: Modulo[];
+}
+
+interface Modulo {
+  titulo: string;
+  clases: string[];
+}
+
+interface VideoProps {
+  src: string;
+}
+
+const cursoJavascript:Curso = {
   "curso": "Curso de JavaScript Básico [2023]",
   "modulos": [
     {
@@ -37,7 +51,18 @@ interface VideoProps {
 }
 export const Video: React.FC<VideoProps> = ({ src }) => {
 
-  const [leccionesVisibles, setLeccionesVisibles] = useState(
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoDuration, setVideoDuration] = useState<number>(0);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.addEventListener('loadedmetadata', () => {
+        setVideoDuration(videoRef.current!.duration);
+      });
+    }
+  }, []);
+  
+  const [leccionesVisibles, setLeccionesVisibles] = useState<boolean[]>(
     cursoJavascript.modulos.map(() => false)
   );
 
@@ -49,25 +74,24 @@ export const Video: React.FC<VideoProps> = ({ src }) => {
     });
   }
   return (
-    <>
+    <div className="justify-center mx-6">
       <h2 className="text-2xl 
         font-lexend 
         dark:text-white 
-        pl-2 pt-4 
+        pb-2
         text-black">{cursoJavascript.curso}</h2>
-      <div className="flex flex-wrap justify-start">
-        <div className="w-full md:w-1/2 lg:w-2/3 xl:w-3/4 p-2">
+      <div className="flex items-start flex-wrap">
+        <div className="w-full sm:w-full md:w-full lg:w-2/3 xl:w-2/3  pb-3">
           {/* Video configuration */}
-          <div className="aspect-w-16 aspect-h-9">
-            <iframe
+            <video
+              ref={videoRef}
               className="w-full h-full aspect-video rounded-md"
               src={src}
               title="Video"
-              allowFullScreen
-            ></iframe>
-          </div>
+              controls
+            ></video>
         </div>
-        <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-2">
+        <div className="w-full sm:w-full md:w-full lg:w-1/3 xl:w-1/3 lg:pl-4 pb-4">
           {/* Aside */}
           <div className=" dark:text-white text-black font-lexend">
             <table className="w-full">
@@ -94,13 +118,16 @@ export const Video: React.FC<VideoProps> = ({ src }) => {
                       <tr className="border-2 border-gray-300">
                         <td>
                           {modulo.clases.map((leccion, leccionIndex) => (
-                            <div className="p-3 font-lexend">
+                            <div className="pl-2 pt-2 font-lexend">
                               <div className="flex gap-2 items-center">
                                   <BiCheckDouble className="text-black size-7" />Clase {leccionIndex + 1}
                               </div>
                               <div className="flex gap-2 items-center">
                               <TbMinusVertical className="text-black size-7" />
-                              <p className='' key={leccionIndex}>{leccionIndex + 1}- {leccion}</p>
+                              <p className='w-full' key={leccionIndex}>{leccionIndex + 1}- {leccion}</p>
+                              {videoDuration > 0 && (
+                                <p className='text-right'>{(videoDuration / 60).toFixed(0)} min</p>
+                              )}
                               </div>
                             </div>
                           ))}
@@ -114,7 +141,7 @@ export const Video: React.FC<VideoProps> = ({ src }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 
 }
