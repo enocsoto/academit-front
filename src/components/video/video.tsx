@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SlArrowDown } from "react-icons/sl";
 import { BiCheckDouble } from "react-icons/bi";
 import { TbMinusVertical } from "react-icons/tb";
+import { GiSandsOfTime } from "react-icons/gi";
 interface Curso {
   curso: string;
   modulos: Modulo[];
@@ -17,7 +18,7 @@ interface VideoProps {
   src: string;
 }
 
-const cursoJavascript:Curso = {
+const cursoJavascript: Curso = {
   "curso": "Curso de JavaScript Básico [2023]",
   "modulos": [
     {
@@ -61,7 +62,7 @@ export const Video: React.FC<VideoProps> = ({ src }) => {
       });
     }
   }, []);
-  
+
   const [leccionesVisibles, setLeccionesVisibles] = useState<boolean[]>(
     cursoJavascript.modulos.map(() => false)
   );
@@ -120,15 +121,23 @@ export const Video: React.FC<VideoProps> = ({ src }) => {
                           {modulo.clases.map((leccion, leccionIndex) => (
                             <div className="pl-2 pt-2 font-lexend">
                               <div className="flex gap-2 items-center">
-                                  <BiCheckDouble className="text-black size-7" />Clase {leccionIndex + 1}
+                                <BiCheckDouble className="text-black  dark:text-white size-7" />Clase {leccionIndex + 1}
                               </div>
-                              <div className="flex gap-2 items-center">
-                              <TbMinusVertical className="text-black size-7" />
-                              <p className='w-full' key={leccionIndex}>{leccionIndex + 1}- {leccion}</p>
-                              {videoDuration > 0 && (
-                                <p className='text-right'>{(videoDuration / 60).toFixed(0)} min</p>
-                              )}
+                              <div className="grid grid-cols-6 gap-4">
+                                <div className="col-start-1 col-end-2">
+                                  <TbMinusVertical className="text-black dark:text-white size-7" />
+                                </div>
+                                <div className="col-start-2 col-span-6">
+                                  <div className="flex flex-wrap gap-2">
+                                    <p className='w-full' key={leccionIndex}>{leccionIndex + 1}- {leccion}</p>
+                                    <GiSandsOfTime className="size-4 dark:text-white" /> 
+                                    {videoDuration > 0 && (
+                                      <p className='text-right text-sm'>{(videoDuration / 60).toFixed(0)} min</p>
+                                    )}
+                                  </div>
+                                </div>
                               </div>
+
                             </div>
                           ))}
                         </td>
