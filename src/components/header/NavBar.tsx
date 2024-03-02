@@ -1,30 +1,50 @@
-import { NavLink } from 'react-router-dom'
-import logo from '../../assets/images/academit-logo.svg'
+import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import logo from '../../assets/images/academit-logo.svg';
+import logoWhite from '../../assets/images/academit-logo-white.svg';
 import { NavLinks } from './NavLinks';
 import { Button } from './Button';
-import { useState } from 'react';
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import { IoMdClose } from "react-icons/io";
 
 export const NavBar = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false);
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
+
+  useEffect(() => {
+    const darkThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkTheme(darkThemeQuery.matches);
+    
+    const darkThemeChangeHandler = (e: MediaQueryListEvent) => {
+      setIsDarkTheme(e.matches);
+    };
+
+    darkThemeQuery.addEventListener('change', darkThemeChangeHandler);
+
+    return () => {
+      darkThemeQuery.removeEventListener('change', darkThemeChangeHandler);
+    };
+  }, []);
+
   return (
-    <nav className='dark:bg-white items-center gap-4 p-3 '>
+    <nav className={`items-center gap-4 p-3 ${isDarkTheme ? 'dark' : ''}`}>
       <div className='flex flex-auto items-center font-medium lg:justify-between'>
         <div className='lg:basis-1/6 z-50 p-3 md:w-auto w-full flex justify-between'>
           <NavLink to='/'>
-            <img src={logo} alt="logo" className='md:cursor-pointer' />
+            <img src={isDarkTheme ? logoWhite : logo} className='md:cursor-pointer' />
           </NavLink>
-          <div className='text-3xl md:hidden' onClick={() => setOpen(!open)}>
-            <RxHamburgerMenu name={`${open ? "close" : "menu"}`}></RxHamburgerMenu>
+          <div className='text-3xl md:hidden ' onClick={() => setOpen(!open)}>
+            <div className={`icon-container ${open ? 'open' : 'closed'}`}>
+              {open ? <IoMdClose /> : <RxHamburgerMenu className='dark:text-white' />}
+            </div>
           </div>
         </div>
         <ul className='md:flex hidden 
                     items-center gap-4 
                     font-lexend text-LoginText 
-                    hover:text-[#313173] lg:text-[20px] 
+                    lg:text-[20px] 
                     md:text-[16px] p-2
-                    '>
+                    dark:text-white'>
           <NavLinks />
           <NavLink to='/contact'>
             <li className='text-LoginText 
@@ -38,7 +58,7 @@ export const NavBar = () => {
         </div>
       </div>
 
-      {/* mible nav */}
+      {/* mobile nav */}
       <ul className={`
                     md:hidden bg-white
                     absolute w-full
@@ -48,7 +68,7 @@ export const NavBar = () => {
         <NavLinks />
         <Button />
       </ul>
-    </nav >
+    </nav>
 
   )
 }
