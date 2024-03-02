@@ -27,11 +27,11 @@ export const NavBar = () => {
   }, []);
 
   return (
-    <nav className={`items-center gap-4 p-3 ${isDarkTheme ? 'dark' : ''}`}>
-      <div className='flex flex-auto items-center font-medium lg:justify-between'>
+    <nav className={`items-center gap-4 pb-3 ${isDarkTheme ? 'dark' : ''}`}>
+      <div className='flex flex-auto items-center  md:justify-between'>
         <div className='lg:basis-1/6 z-50 p-3 md:w-auto w-full flex justify-between'>
           <NavLink to='/'>
-            <img src={isDarkTheme ? logoWhite : logo} className='md:cursor-pointer' />
+            <img src={isDarkTheme ? logoWhite : logo} className='md:cursor-pointer h-full' />
           </NavLink>
           <div className='text-3xl md:hidden ' onClick={() => setOpen(!open)}>
             <div className={`icon-container ${open ? 'open' : 'closed'}`}>
@@ -42,14 +42,14 @@ export const NavBar = () => {
         <ul className='md:flex hidden 
                     items-center gap-4 
                     font-lexend text-LoginText 
-                    lg:text-[20px] 
-                    md:text-[16px] p-2
+                    lg:text-base
+                    md:text-base p-2
                     dark:text-white'>
           <NavLinks />
           <NavLink to='/contact'>
             <li className='text-LoginText 
-                    hover:text-[#313173] lg:text-[20px] 
-                    md:text-[16px] p-2'>Contáctanos</li>
+                    hover:text-[#313173] lg:text-base 
+                    md:text-base p-2'>Contáctanos</li>
           </NavLink>
 
         </ul>
